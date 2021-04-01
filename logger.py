@@ -28,13 +28,11 @@ class Logger:
     def log_reward(self,episode,reward):
         self.writer.add_scalar('reward', reward, episode)
     
-    def save_models(self, generator, discriminator, epoch):
-        out_dir = './data/models/{}'.format(self.data_subdir)
-        Logger._make_dir(out_dir)
-        torch.save(generator.state_dict(),
-                   '{}/G_epoch_{}'.format(out_dir, epoch))
-        torch.save(discriminator.state_dict(),
-                   '{}/D_epoch_{}'.format(out_dir, epoch))
+    def log_duration(self,episode,duration):
+        self.writer.add_scalar('duration', duration, episode)
+        
+    def log_scalar(self,episode,scalar,name):
+        self.writer.add_scalar(name,scalar,episode)
 
     def close(self):
         self.writer.close()
