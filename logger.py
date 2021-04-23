@@ -24,12 +24,6 @@ class Logger:
         logdir = f'runs/{comment}'
 
         self.writer = SummaryWriter(log_dir=logdir,comment=comment)
-
-    def log_reward(self,episode,reward):
-        self.writer.add_scalar('reward', reward, episode)
-    
-    def log_duration(self,episode,duration):
-        self.writer.add_scalar('duration', duration, episode)
         
     def log_scalar(self,episode,scalar,name):
         self.writer.add_scalar(name,scalar,episode)
